@@ -4,18 +4,18 @@
 
 <script>
     export default {
-        props: ['resourceName', 'field'],
+        props: ["resourceName", "field"],
 
         computed: {
             fieldPlain() {
-                let field = this.field;
-                let fieldPlain = field.value.replace(/<\/?.+?>/g, "");
-                if (fieldPlain.length > 20) {
-                    fieldPlain = fieldPlain.substring(20) + '...'
+                let _field = this.field;
+                let _fieldPlain = _field.value.replace(/<\/?.+?>/g, "");
+                if (_fieldPlain.length > 20) {
+                    _fieldPlain = _fieldPlain.substring(20) + "...";
                 }
 
-                return fieldPlain
-            }
-        }
-    }
+                return _fieldPlain;
+            },
+        },
+    };
 </script>

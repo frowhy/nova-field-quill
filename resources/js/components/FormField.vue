@@ -15,14 +15,14 @@
 </template>
 
 <script>
-    import 'quill/dist/quill.core.css'
-    import 'quill/dist/quill.snow.css'
+    import "quill/dist/quill.core.css";
+    import "quill/dist/quill.snow.css";
 
-    import {quillEditor, Quill} from 'vue-quill-editor'
-    import {container, ImageExtend, QuillWatch} from 'quill-image-extend-module'
-    import {FormField, HandlesValidationErrors} from 'laravel-nova'
+    import {quillEditor, Quill} from "vue-quill-editor";
+    import {container, ImageExtend, QuillWatch} from "quill-image-extend-module";
+    import {FormField, HandlesValidationErrors} from "laravel-nova";
 
-    Quill.register('modules/ImageExtend', ImageExtend);
+    Quill.register("modules/ImageExtend", ImageExtend);
 
     export default {
 
@@ -32,60 +32,60 @@
                     modules: {
                         ImageExtend: {
                             loading: true,
-                            name: 'img',
-                            action: '/nova-api/field/quill/upload',
+                            name: "img",
+                            action: "/nova-api/field/quill/upload",
                             response: (res) => {
-                                return res.url
+                                return res.url;
                             },
                             headers: (xhr) => {
-                                xhr.setRequestHeader('X-CSRF-TOKEN', document.head.querySelector('meta[name="csrf-token"]').content)
+                                xhr.setRequestHeader("X-CSRF-TOKEN", document.head.querySelector("meta[name=\"csrf-token\"]").content);
                             },
                         },
                         toolbar: {
                             container: container,
                             handlers: {
-                                'image': function () {
-                                    QuillWatch.emit(this.quill.id)
-                                }
-                            }
-                        }
+                                "image": function () {
+                                    QuillWatch.emit(this.quill.id);
+                                },
+                            },
+                        },
                     },
-                    placeholder: this.field.name || '请在这里插入文本'
-                }
-            }
+                    placeholder: this.field.name || "请在这里插入文本",
+                },
+            };
         },
 
         mixins: [FormField, HandlesValidationErrors],
 
-        props: ['resourceName', 'resourceId', 'field'],
+        props: ["resourceName", "resourceId", "field"],
 
         methods: {
             /*
              * Set the initial, internal value for the field.
              */
             setInitialValue() {
-                this.value = this.field.value || ''
+                this.value = this.field.value || "";
             },
 
             /**
              * Fill the given FormData object with the field's internal value.
              */
             fill(formData) {
-                formData.append(this.field.attribute, this.value || '')
+                formData.append(this.field.attribute, this.value || "");
             },
 
             /**
              * Update the field's internal value.
              */
             handleChange(value) {
-                this.value = value
-            }
+                this.value = value;
+            },
         },
 
         components: {
-            quillEditor
-        }
-    }
+            quillEditor,
+        },
+    };
 </script>
 
 <style>

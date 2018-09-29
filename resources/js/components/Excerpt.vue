@@ -1,6 +1,6 @@
 <template>
     <div v-if="hasContent">
-        <div v-if="expanded" class="markdown leading-normal" v-html="content" />
+        <div v-if="expanded" class="markdown leading-normal" v-html="content"/>
 
         <a
             @click="toggle"
@@ -17,29 +17,29 @@
 </template>
 
 <script>
-export default {
-    props: {
-        content: {
-            type: String,
-        },
-    },
-
-    data: () => ({ expanded: false }),
-
-    methods: {
-        toggle() {
-            this.expanded = !this.expanded
-        },
-    },
-
-    computed: {
-        hasContent() {
-            return this.content !== '' && this.content !== null
+    export default {
+        props: {
+            content: {
+                type: String,
+            },
         },
 
-        showHideLabel() {
-            return !this.expanded ? this.__('Show Content') : this.__('Hide Content')
+        data: () => ({expanded: false}),
+
+        methods: {
+            toggle() {
+                this.expanded = !this.expanded;
+            },
         },
-    },
-}
+
+        computed: {
+            hasContent() {
+                return this.content !== "" && this.content !== null;
+            },
+
+            showHideLabel() {
+                return !this.expanded ? this.__("Show Content") : this.__("Hide Content");
+            },
+        },
+    };
 </script>
