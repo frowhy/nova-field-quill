@@ -7,10 +7,10 @@
 </template>
 
 <script>
-    import Excerpt from './Excerpt'
+    import Excerpt from "./Excerpt";
 
     export default {
-        props: ['resource', 'resourceName', 'resourceId', 'field'],
+        props: ["resource", "resourceName", "resourceId", "field"],
         components: {Excerpt},
-    }
+    };
 </script>
